@@ -1,0 +1,20 @@
+---
+title: "HW5"
+author: "Qi Qi"
+date: "10/12/2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.
+E-steps:
+$$Q(\Psi|\Psi^{(k)})=E[\ln L(\Psi|x_i, y_i, z)|x_i,y_i,\Psi^{(k)}]$$
+$$=\sum_{z_{ij}}p(z_{ij}|x_i,y_i,\Psi^{(k)})(\sum_{i=1}^n\sum_{j=1}^mz_{ij}\log\pi_j\phi(y_i-x_i^T\beta_j;0,\sigma^2))$$
+$$=\sum_{i=1}^n\sum_{j=1}^m[\sum_{z_{ij}}p(z_{ij}|x_i,y_i,\Psi^{(k)})z_{ij}]\log\pi_j\phi(y_i-x_i^T\beta_j;0,\sigma^2)$$
+$$=\sum_{i=1}^n\sum_{j=1}^mp_{ij}^{(k)}\{\log\pi_j+\log\phi(y_i-x_i^T\beta_j;0,\sigma^2)\}$$
+where $$p_{ij}^{(k)}=\sum_{z_{ij}}p(z_{ij}|x_i,y_i,\Psi^{(k)})z_{ij}=E[z_{ij}|x_i,y_i,\Psi^{(k)}]$$
+Since $z_{ij}=1$ if $i^{th}$ observation is from $j^{th}$ component, then
+$$p_{ij}^{(k)}=E[z_{ij}|x_i,y_i,\Psi^{(k)}]=p(z_{ij}=1|x_i,y_i,\Psi^{(k)})=\frac{p(z_{ij}=1,x_i,y_i,\Psi^{(k)})}{p(x_i,y_i,\Psi^{(k)})}=\frac{\pi_j^{(k)}\phi(y_i-x_i^T\beta_j^{(k)};0,\sigma^{2^{(k)}})}{\sum_{j=1}^m\pi_j^{(k)}\phi(y_i-x_i^T\beta_j^{(k)};0,\sigma^{2^{(k)}})}$$
